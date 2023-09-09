@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
 
 import ChatMessage from '@/components/ChatMessage'
+import Landing from '@/components/Landing'
 
 const prompt = `You are a chatbot with access to Replit's AI podcast transcripts.
 Respond to user queries in a friendly manner. For any given query you will have
@@ -59,6 +60,10 @@ export default function Home() {
   return (
     <main className="flex h-screen flex-col items-center justify-start">
       <div ref={containerRef} className='overflow-auto w-full text-left flex-1'>
+        {messages.length === 1 && (
+          <Landing />
+        )}
+
         {messages.map(m => (
           <ChatMessage key={m.id} role={m.role} message={m.content} />
         ))}

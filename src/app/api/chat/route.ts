@@ -36,7 +36,6 @@ export async function POST(req: Request) {
   Remember to answer in the format as provided in the system message
   `
   messages[messages.length - 1].content = contextInjectedMessage
-  console.log(messages)
 
   const response = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
