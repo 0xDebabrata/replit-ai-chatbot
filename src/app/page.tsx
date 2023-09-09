@@ -71,8 +71,9 @@ export default function Home() {
       <div className='w-full bg-neutral-900'>
         <form 
           onSubmit={handleSubmit}
-          className='w-full max-w-md my-10 mx-auto flex space-x-3'
+          className='w-full max-w-md my-10 mx-auto flex space-x-3 items-center'
         >
+          <span className='text-xl'>⠕</span>
           <input
             type='text'
             value={input}
