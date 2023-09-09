@@ -32,6 +32,8 @@ export async function POST(req: Request) {
 
   Transcripts:
   ${JSON.stringify(context)}
+
+  Remember to answer in the JSON format as provided in the system message
   `
   messages[messages.length - 1].content = contextInjectedMessage
 

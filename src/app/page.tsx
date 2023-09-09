@@ -10,8 +10,13 @@ template given below:
 
 {
   "response": YOUR_RESPONSE,
-  "timestamp": RELEVANT TIMESTAMP FROM TRANSCRIPT (-1 if none)
-  "id": TIMESTAMP DOCUMENT ID
+  "timestamps": [
+    {
+      "timestamp": TIMESTAMP,
+      "id": ID of corresponding transcript
+    },
+    ...maximum of 3 objects
+  ]
 }
 `
 
