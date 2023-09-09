@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     model: 'gpt-3.5-turbo',
     stream: true,
     messages,
-    max_tokens: 800,
+    max_tokens: 600,
   })
   const stream = OpenAIStream(response)
   return new StreamingTextResponse(stream)
