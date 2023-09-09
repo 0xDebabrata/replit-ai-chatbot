@@ -1,20 +1,52 @@
 'use client'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useChat } from 'ai/react'
+
+const prompt = `You are a chatbot with access to Replit's AI podcast transcripts.
+Respond to user queries in a friendly manner. For any given query you will have
+access to the previous messages with the user as well as relevant transcripts
+from any podcast episode. Respond to the queries in JSON format following the
+template given below:
+
+{
+  "response": YOUR_RESPONSE,
+  "timestamp": RELEVANT TIMESTAMP FROM TRANSCRIPT (-1 if none)
+  "id": TIMESTAMP DOCUMENT ID
+}
+`
 
 export default function Home() {
-  const [query, setQuery] = useState('')
+  const { messages, input, handleInputChange, handleSubmit, isLoading: loading } = useChat({
+    api: "/api/chat",
+    initialMessages: [
+      {
+        id: 'init',
+        role: 'system',
+        content: prompt,
+      }
+    ]
+  })
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className='w-full max-w-md'>
+      <form 
+        onSubmit={handleSubmit}
+        className='w-full max-w-md'
+      >
         <input
           type='text'
-          value={query}
-          onChange={e => setQuery(e.target.value)}
+          value={input}
+          onChange={handleInputChange}
           placeholder='what do you want to know?'
-          className='px-5 w-full rounded h-10 text-neutral-600 shadow-xl shadow-white/20'
+          className='px-4 w-full rounded h-10 text-neutral-600 shadow-xl shadow-white/20'
         />
+      </form>
+      <div>
+        {messages.map(m => (
+          <div key={m.id}>
+            {m.role}: {m.content}
+          </div>
+        ))}
       </div>
     </main>
   )
