@@ -81,7 +81,7 @@ export default function Home() {
             placeholder='what do you want to know?'
             className='px-4 w-full rounded h-10 text-neutral-600 shadow-xl shadow-white/20'
           />
-          <button type='submit' className='px-3 hover:bg-neutral-700 rounded duration-200'>
+          <button type='submit' className='px-3 py-2.5 hover:bg-neutral-700 rounded duration-200'>
             <ArrowRightIcon className='h-5 w-5 text-white' />
           </button>
         </form>
