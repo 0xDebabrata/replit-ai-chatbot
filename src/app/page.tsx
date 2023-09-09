@@ -38,6 +38,11 @@ Response if user query does not have good relation with transcript:
 Deploying large-scale AI models can be a challenging task, requiring significant engineering efforts for building verifiers and conducting large-scale testing. Big companies like Google may have an advantage in approaching this, but collaboration with other organizations can also be beneficial.
 `
 
+const suggestions = [
+  "How to deploy ML models to production?",
+  "How is ML used in drug discovery?",
+]
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -56,6 +61,7 @@ export default function Home() {
 
     containerRef.current.scrollTop = containerRef.current.scrollHeight
   }, [messages])
+  console.log(Math.floor(Math.random() * 10) % 2)
 
   return (
     <main className="flex h-screen flex-col items-center justify-start">
@@ -71,8 +77,15 @@ export default function Home() {
       <div className='w-full bg-neutral-900'>
         <form 
           onSubmit={handleSubmit}
-          className='w-full max-w-md my-10 mx-auto flex space-x-3 items-center'
+          className='relative w-full max-w-md my-6 mx-auto flex space-x-3 items-center'
         >
+          {/*
+            <div className='absolute inset-x-0 -translate-x-2 text-center -top-16 text-neutral-300'>
+              <p className='py-1 px-3 rounded text-sm inline-block border border-neutral-500 hover:bg-neutral-600 cursor-pointer'>
+                {suggestions[Math.floor(Math.random() * 10) % 2]}
+              </p>
+            </div>
+          */}
           <span className='text-xl'>⠕</span>
           <input
             type='text'
