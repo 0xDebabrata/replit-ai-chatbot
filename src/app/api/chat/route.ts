@@ -38,7 +38,7 @@ export async function POST(req: Request) {
   messages[messages.length - 1].content = contextInjectedMessage
 
   const response = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
+    model: 'gpt-4o',
     stream: true,
     messages,
     max_tokens: 600,

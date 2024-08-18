@@ -17,6 +17,7 @@ export async function vectorSearch(index: string, queryVector: number[], topK = 
   })
 
   const data = await response.json()
+  console.log(topK)
 
   if (!response.ok) {
     console.error(data)
